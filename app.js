@@ -4,7 +4,7 @@ const User =  require('./models/userModel');
 const passport = require('passport');
 const LocalStrategy = require('passport-local');
 const cors = require('cors');
-const session = require('express-session');
+// const session = require('express-session');
 const path = require('path');
 
 require('dotenv').config();
@@ -15,7 +15,7 @@ const userRoutes = require('./routes/user');
 const productRoutes = require('./routes/product');
 const imageUpload = require('./routes/imageUpload');
 
-const MongoStore = require('connect-mongo');
+// const MongoStore = require('connect-mongo');
 
 const app = express();
 const port = process.env.PORT || 5000;
@@ -47,18 +47,18 @@ mongoose.connect(process.env.DB_URL, {  // Database Connection
 
 //Session initialization
 
-app.use(session({   // generates session cookie
-    secret: process.env.SESSION_SECRET,
-    saveUninitialized: true,
-    resave: false,
-    cookie: {
-        httpOnly: true,
-        maxAge: 3600000
-    },
-    store : MongoStore.create({
-        mongoUrl: process.env.DB_URL
-    })  // storing sessions in mongoDB
-}));
+// app.use(session({   // generates session cookie
+//     secret: process.env.SESSION_SECRET,
+//     saveUninitialized: true,
+//     resave: false,
+//     cookie: {
+//         httpOnly: true,
+//         maxAge: 3600000
+//     },
+//     store : MongoStore.create({
+//         mongoUrl: process.env.DB_URL
+//     })  // storing sessions in mongoDB
+// }));
 
 // ::::::::::::::::::: ROUTES ::::::::::::::::::::::
 
