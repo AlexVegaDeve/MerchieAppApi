@@ -20,7 +20,7 @@ const port = process.env.PORT || 5000;
 // Middleware
 app.use(express.json());
 app.use(cors());
-// app.use(passport.initialize());
+app.use(passport.initialize());
 passport.use(new LocalStrategy(User.authenticate()));
 
 
