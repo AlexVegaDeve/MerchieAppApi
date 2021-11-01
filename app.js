@@ -13,16 +13,16 @@ const userRoutes = require('./routes/user');
 const productRoutes = require('./routes/product');
 const imageUpload = require('./routes/imageUpload');
 
-
-
 const app = express();
 const port = process.env.PORT || 5000;
+
 
 // Middleware
 app.use(express.json());
 app.use(cors());
-
+// app.use(passport.initialize());
 passport.use(new LocalStrategy(User.authenticate()));
+
 
 // Connections
 mongoose.connect(process.env.DB_URL, {  // Database Connection
