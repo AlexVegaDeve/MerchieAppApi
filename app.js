@@ -9,7 +9,6 @@ const path = require('path');
 
 require('dotenv').config();
 
-
 // import routes
 const userRoutes = require('./routes/user');
 const productRoutes = require('./routes/product');
@@ -24,16 +23,16 @@ const port = process.env.PORT || 5000;
 // Middleware
 app.use(express.json());
 app.use(cors());
-app.use(passport.initialize());
-app.use(passport.session());
+// app.use(passport.initialize());
+// app.use(passport.session());
 passport.use(new LocalStrategy(User.authenticate()));
 
-passport.serializeUser((User, done) => done(null, User.id)); // how users are logged in in a session
-passport.deserializeUser(function(id, done) {
-    User.findById(id, function(err, user) {
-      done(err, user);
-    });
-}) // how users are logged out in a session
+// passport.serializeUser((User, done) => done(null, User.id)); // how users are logged in in a session
+// passport.deserializeUser(function(id, done) {
+//     User.findById(id, function(err, user) {
+//       done(err, user);
+//     });
+// }) // how users are logged out in a session
 
 // Connections
 mongoose.connect(process.env.DB_URL, {  // Database Connection
